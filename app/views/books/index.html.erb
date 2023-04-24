@@ -1,30 +1,53 @@
 <h1>Books</h1>
+
 <% @books.each do |book| %>
 
- <p>Title</p>
-  <span>
-    <%#= link_to books.title, books_path(books.id) %>
+<table>
+ <tr>
+  <th>Title</th>
+  <th>Body</th>
+ </tr>
+ <tr>
+  <td>
     <%= book.title %>
-  </span>
-  
-  <p>Body</p>
-    <span>
-    <%#= link_to books.title, books_path(books.id) %>
+  </td>
+  <td>
     <%= book.body %>
-    </span>
-   
+  <td>
+  <td>
+    <%= link_to "Show", book_path(book.id) %>
+    <%= link_to "Edit", edit_book_path(book.id) %>
+    <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
+  </td>
+ </tr>
+
+</table>
+
 
 <% end %>
 
 
 
 <%= form_with model: Book.new do |f| %>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <h2>New book</h2>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
 
-  <h4>Body</h4>
-  <%= f.text_area :body %>
+    <p>Title</p>
+  　<%= f.text_field :title %>
 
+  　<p>Body</p>
+  　<%= f.text_area :body %>
+
+ <p>
   <%= f.submit 'Create Book ' %>
 <% end %>
+ </p>
