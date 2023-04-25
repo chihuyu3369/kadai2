@@ -1,11 +1,13 @@
-  <div>
-   <%= flash[:success] %>
+  <div class="message"> 
+   <p>
+    <%= flash[:success] %>
+   </p>
   </div>
   
-  <p>
+   <p>
     <strong>Title:</strong>
     <%= @book.title %>
-  </p>
+   </p>
   <p>
    <strong>Body:</strong>
     <%= @book.body %>

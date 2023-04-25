@@ -7,13 +7,15 @@
   <th>Title</th>
   <th>Body</th>
  </tr>
+
  <tr>
-  <td>
+  <td class= "title">
     <%= book.title %>
   </td>
-  <td>
+
+  <td class= "body">
     <%= book.body %>
-  <td>
+  </td>
   <td>
     <%= link_to "Show", book_path(book.id) %>
     <%= link_to "Edit", edit_book_path(book.id) %>
@@ -31,7 +33,7 @@
 <%= form_with model: Book.new do |f| %>
 
 <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
+  <%= @book.errors.count %>件のerrorが発生しました
   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
